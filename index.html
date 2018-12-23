@@ -1,0 +1,559 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Naveen Mohideen</title>
+  <meta charset="UTF-8">
+  <meta name="google" content="notranslate">
+  <meta http-equiv="Content-Language" content="en">
+  <script src="scripts/d3.v4.min.js"></script>
+  <script src="scripts/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="./node_modules/atomic-bohr-model/dist/atomicBohrModel.min.js" charset="utf-8"></script>
+  <link rel='stylesheet' type='text/css' href='styles/style.css'>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+</head>
+
+<body>
+  <!-- HTML -->
+  <div id="atomFlex">
+    <div id="bohr-model-container"></div>
+    <div id="bohr-model-container2"></div>
+    <div id="bohr-model-container3"></div>
+  </div>
+  <div id="title">
+    Naveen Mohideen
+  </div>
+  <div id="navBar">
+    <div class="navButton" id="aboutMeBtn">
+      About Me
+    </div>
+    <div id="break">
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+    </div>
+    <div class="navButton" id="notebooksBtn">
+      Notebooks
+    </div>
+  </div>
+  <div id="contentFlex">
+    <div class="bracket" id="Lbracket">
+      {
+    </div>
+    <div class="content" id="notebooks">
+      <div class="notebookFlex">
+        <button class="bookButton" id="bookButton1" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book1" src="images/book.png" alt="Book 1"/> </button>
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book2" src="images/book.png" alt="Book 2"/> </button>
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book3" src="images/book.png" alt="Book 3"/> </button>
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book4" src="images/book.png" alt="Book 4"/> </button>
+      </div>
+      <div class="notebookFlex">
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book5" src="images/book.png" alt="Book 5"/> </button>
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book6" src="images/book.png" alt="Book 6"/> </button>
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book7" src="images/book.png" alt="Book 7"/> </button>
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book8" src="images/book.png" alt="Book 8"/> </button>
+      </div>
+    </div>
+    <div class="content" id="aboutMe">
+      <p> Biological physicist extraordinaire.</p>
+    </div>
+    <div class="bracket" id="Rbracket">
+      }
+    </div>
+  </div>
+
+  <footer class="footer">
+    Copyright © Naveen Mohideen 2019
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div id="modalDialog" class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div id="modalBody" class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    const mq = window.matchMedia( "(max-width: 768px)" );
+
+    var navigationState = 0;
+    // 0 = About Me
+    // 1 = Notebooks
+
+    // NOTEBOOK MODAL HANDLING
+    var book1 = document.getElementById("bookButton1");
+
+    book1.onclick = function() {
+      d3.select(".modal-body").html("<iframe class='iframeWindow' src='notebooks/test-notebook.html'>hello</iframe>");
+    }
+
+    if (mq.matches) {
+      console.log("mobile!")
+      if (window.matchMedia("(orientation: portrait)").matches) {
+        console.log("landscape")
+        // ATOMS
+        var atomicConfigNa = {
+          containerId: "#bohr-model-container",
+          numElectrons: 11,
+          idNumber: 1,
+          nucleusRadius: 20,
+          electronRadius: 2,
+          symbolOffset: 8,
+          animationTime: 1000,
+          orbitalColor: 'rgba(24, 255, 255, 0.3)',
+          orbitalWidth: 0.5,
+          nucleusColor: 'rgba(3, 169, 244, 0.2)',
+          electronColor: 'rgba(24, 255, 255, 0.6)',
+          orbitalRotationConfig: { // Invokes orbital rotations at initialization
+            pattern: {
+              alternating: true, // Alternate orbital direction
+              clockwise: true, // Direction for all orbitals
+              preset: 'cubedPositive', // String to set pattern (see Features section)
+            }
+          },
+        }
+
+        var atomicConfigV = {
+          containerId: "#bohr-model-container2",
+          numElectrons: 23,
+          idNumber: 2,
+          nucleusRadius: 20,
+          electronRadius: 2,
+          symbolOffset: 8,
+          animationTime: 1000,
+          orbitalColor: 'rgba(24, 255, 255, 0.3)',
+          orbitalWidth: 0.5,
+          nucleusColor: 'rgba(3, 169, 244, 0.2)',
+          electronColor: 'rgba(24, 255, 255, 0.6)',
+          orbitalRotationConfig: { // Invokes orbital rotations at initialization
+            pattern: {
+              alternating: true, // Alternate orbital direction
+              clockwise: true, // Direction for all orbitals
+              preset: 'cubedPositive', // String to set pattern (see Features section)
+            }
+          },
+        }
+
+        var atomicConfigN = {
+          containerId: "#bohr-model-container3",
+          numElectrons: 7,
+          idNumber: 3,
+          nucleusRadius: 20,
+          electronRadius: 2,
+          symbolOffset: 8,
+          animationTime: 1000,
+          orbitalColor: 'rgba(24, 255, 255, 0.3)',
+          orbitalWidth: 0.5,
+          nucleusColor: 'rgba(3, 169, 244, 0.2)',
+          electronColor: 'rgba(24, 255, 255, 0.6)',
+          orbitalRotationConfig: { // Invokes orbital rotations at initialization
+            pattern: {
+              alternating: true, // Alternate orbital direction
+              clockwise: true, // Direction for all orbitals
+              preset: 'cubedPositive', // String to set pattern (see Features section)
+            }
+          },
+        }
+
+        var myAtom = new Atom(atomicConfigNa)
+        var myAtom = new Atom(atomicConfigV)
+        var myAtom = new Atom(atomicConfigN)
+
+        // NAVIGATION
+        var aboutMeBtn = d3.select("#aboutMeBtn")
+        var notebooksBtn = d3.select("#notebooksBtn")
+        var Lbracket = d3.select("#Lbracket");
+        var Rbracket = d3.select("#Rbracket");
+        var notebooks = d3.select("#notebooks");
+        var aboutMe = d3.select("#aboutMe");
+
+        if (navigationState == 0) {
+          aboutMe.style("opacity", 1);
+          aboutMe.style("display", "block");
+
+          notebooks.style("opacity", 0);
+          notebooks.style("display", "none");
+        } else if (navigationState == 1) {
+          aboutMe.style("opacity", 0);
+          aboutMe.style("display", "none");
+
+          notebooks.style("opacity", 1);
+          notebooks.style("display", "block");
+        }
+
+        notebooksBtn.on("click", function() {
+
+          if (navigationState == 0) {
+
+            aboutMe.transition().style("opacity", 0);
+            Rbracket.transition().style("margin-left", "-32vw");
+            Lbracket.transition().style("margin-right", "-32vw");
+
+            setTimeout(function () {
+
+              setTimeout(function () {
+                Rbracket.transition().style("margin-left", "30vw");
+                Lbracket.transition().style("margin-right", "30vw");
+
+                setTimeout(function () {
+                  notebooks.transition().style("display", "block");
+                  notebooks.transition().style("opacity", 1);
+                  aboutMe.style("display", "none");
+                  navigationState = 1;
+                }, 850); // called 1.15s after brackets sweep in
+
+              }, 150); // called 0.65s after brackets sweep in
+
+            }, 1600); // called 0.5s after brackets sweep in
+
+          } // navigationState check
+
+        });
+
+        aboutMeBtn.on("click", function() {
+
+          if (navigationState == 1) {
+
+            notebooks.transition().style("opacity", 0);
+            Rbracket.transition().style("margin-left", "-32vw");
+            Lbracket.transition().style("margin-right", "-32vw");
+
+            setTimeout(function () {
+
+              setTimeout(function () {
+                Rbracket.transition().style("margin-left", "30vw");
+                Lbracket.transition().style("margin-right", "30vw");
+
+                setTimeout(function () {
+                  aboutMe.transition().style("display", "block");
+                  aboutMe.transition().style("opacity", 1);
+                  notebooks.style("display", "none");
+                  navigationState = 0;
+                }, 850); // called 1.15s after brackets sweep in
+
+              }, 150); // called 0.65s after brackets sweep in
+
+            }, 1600); // called 0.5s after brackets sweep in
+
+          } // navigationState check
+
+        });
+      } else {
+        console.log("landscape")
+        // ATOMS
+        var atomicConfigNa = {
+          containerId: "#bohr-model-container",
+          numElectrons: 11,
+          idNumber: 1,
+          nucleusRadius: 17,
+          electronRadius: 2,
+          symbolOffset: 7,
+          animationTime: 1000,
+          orbitalColor: 'rgba(24, 255, 255, 0.3)',
+          orbitalWidth: 0.5,
+          nucleusColor: 'rgba(3, 169, 244, 0.2)',
+          electronColor: 'rgba(24, 255, 255, 0.6)',
+          orbitalRotationConfig: { // Invokes orbital rotations at initialization
+            pattern: {
+              alternating: true, // Alternate orbital direction
+              clockwise: true, // Direction for all orbitals
+              preset: 'cubedPositive', // String to set pattern (see Features section)
+            }
+          },
+        }
+
+        var atomicConfigV = {
+          containerId: "#bohr-model-container2",
+          numElectrons: 23,
+          idNumber: 2,
+          nucleusRadius: 17,
+          electronRadius: 2,
+          symbolOffset: 7,
+          animationTime: 1000,
+          orbitalColor: 'rgba(24, 255, 255, 0.3)',
+          orbitalWidth: 0.5,
+          nucleusColor: 'rgba(3, 169, 244, 0.2)',
+          electronColor: 'rgba(24, 255, 255, 0.6)',
+          orbitalRotationConfig: { // Invokes orbital rotations at initialization
+            pattern: {
+              alternating: true, // Alternate orbital direction
+              clockwise: true, // Direction for all orbitals
+              preset: 'cubedPositive', // String to set pattern (see Features section)
+            }
+          },
+        }
+
+        var atomicConfigN = {
+          containerId: "#bohr-model-container3",
+          numElectrons: 7,
+          idNumber: 3,
+          nucleusRadius: 17,
+          electronRadius: 2,
+          symbolOffset: 7,
+          animationTime: 1000,
+          orbitalColor: 'rgba(24, 255, 255, 0.3)',
+          orbitalWidth: 0.5,
+          nucleusColor: 'rgba(3, 169, 244, 0.2)',
+          electronColor: 'rgba(24, 255, 255, 0.6)',
+          orbitalRotationConfig: { // Invokes orbital rotations at initialization
+            pattern: {
+              alternating: true, // Alternate orbital direction
+              clockwise: true, // Direction for all orbitals
+              preset: 'cubedPositive', // String to set pattern (see Features section)
+            }
+          },
+        }
+
+        var myAtom = new Atom(atomicConfigNa)
+        var myAtom = new Atom(atomicConfigV)
+        var myAtom = new Atom(atomicConfigN)
+
+        // NAVIGATION
+        var aboutMeBtn = d3.select("#aboutMeBtn")
+        var notebooksBtn = d3.select("#notebooksBtn")
+        var Lbracket = d3.select("#Lbracket");
+        var Rbracket = d3.select("#Rbracket");
+        var notebooks = d3.select("#notebooks");
+        var aboutMe = d3.select("#aboutMe");
+
+        if (navigationState == 0) {
+          aboutMe.style("opacity", 1);
+          aboutMe.style("display", "block");
+
+          notebooks.style("opacity", 0);
+          notebooks.style("display", "none");
+        } else if (navigationState == 1) {
+          aboutMe.style("opacity", 0);
+          aboutMe.style("display", "none");
+
+          notebooks.style("opacity", 1);
+          notebooks.style("display", "block");
+        }
+
+        notebooksBtn.on("click", function() {
+
+          if (navigationState == 0) {
+
+            aboutMe.transition().style("opacity", 0);
+            Rbracket.transition().style("margin-left", "-43vw");
+            Lbracket.transition().style("margin-right", "-43vw");
+
+            setTimeout(function () {
+
+              setTimeout(function () {
+                Rbracket.transition().style("margin-left", "10vw");
+                Lbracket.transition().style("margin-right", "10vw");
+
+                setTimeout(function () {
+                  notebooks.transition().style("display", "block");
+                  notebooks.transition().style("opacity", 1);
+                  aboutMe.style("display", "none");
+                  navigationState = 1;
+                }, 850); // called 1.15s after brackets sweep in
+
+              }, 150); // called 0.65s after brackets sweep in
+
+            }, 1600); // called 0.5s after brackets sweep in
+
+          } // navigationState check
+
+        });
+
+        aboutMeBtn.on("click", function() {
+
+          if (navigationState == 1) {
+
+            notebooks.transition().style("opacity", 0);
+            Rbracket.transition().style("margin-left", "-43vw");
+            Lbracket.transition().style("margin-right", "-43vw");
+
+            setTimeout(function () {
+
+              setTimeout(function () {
+                Rbracket.transition().style("margin-left", "10vw");
+                Lbracket.transition().style("margin-right", "10vw");
+
+                setTimeout(function () {
+                  aboutMe.transition().style("display", "block");
+                  aboutMe.transition().style("opacity", 1);
+                  notebooks.style("display", "none");
+                  navigationState = 0;
+                }, 850); // called 1.15s after brackets sweep in
+
+              }, 150); // called 0.65s after brackets sweep in
+
+            }, 1600); // called 0.5s after brackets sweep in
+
+          } // navigationState check
+
+        });
+      }
+
+    } else { // end of mobile
+      console.log("desktop!")
+      // ATOMS
+      var atomicConfigNa = {
+        containerId: "#bohr-model-container",
+        numElectrons: 11,
+        idNumber: 1,
+        nucleusRadius: 25,
+        electronRadius: 3,
+        symbolOffset: 9,
+        animationTime: 1000,
+        orbitalColor: 'rgba(24, 255, 255, 0.3)',
+        orbitalWidth: 0.5,
+        nucleusColor: 'rgba(3, 169, 244, 0.2)',
+        electronColor: 'rgba(24, 255, 255, 0.6)',
+        orbitalRotationConfig: { // Invokes orbital rotations at initialization
+          pattern: {
+            alternating: true, // Alternate orbital direction
+            clockwise: true, // Direction for all orbitals
+            preset: 'cubedPositive', // String to set pattern (see Features section)
+          }
+        },
+      }
+
+      var atomicConfigV = {
+        containerId: "#bohr-model-container2",
+        numElectrons: 23,
+        idNumber: 2,
+        nucleusRadius: 25,
+        electronRadius: 3,
+        symbolOffset: 9,
+        animationTime: 1000,
+        orbitalColor: 'rgba(24, 255, 255, 0.3)',
+        orbitalWidth: 0.5,
+        nucleusColor: 'rgba(3, 169, 244, 0.2)',
+        electronColor: 'rgba(24, 255, 255, 0.6)',
+        orbitalRotationConfig: { // Invokes orbital rotations at initialization
+          pattern: {
+            alternating: true, // Alternate orbital direction
+            clockwise: true, // Direction for all orbitals
+            preset: 'cubedPositive', // String to set pattern (see Features section)
+          }
+        },
+      }
+
+      var atomicConfigN = {
+        containerId: "#bohr-model-container3",
+        numElectrons: 7,
+        idNumber: 3,
+        nucleusRadius: 25,
+        electronRadius: 3,
+        symbolOffset: 9,
+        animationTime: 1000,
+        orbitalColor: 'rgba(24, 255, 255, 0.3)',
+        orbitalWidth: 0.5,
+        nucleusColor: 'rgba(3, 169, 244, 0.2)',
+        electronColor: 'rgba(24, 255, 255, 0.6)',
+        orbitalRotationConfig: { // Invokes orbital rotations at initialization
+          pattern: {
+            alternating: true, // Alternate orbital direction
+            clockwise: true, // Direction for all orbitals
+            preset: 'cubedPositive', // String to set pattern (see Features section)
+          }
+        },
+      }
+
+      var myAtom = new Atom(atomicConfigNa)
+      var myAtom = new Atom(atomicConfigV)
+      var myAtom = new Atom(atomicConfigN)
+
+      // NAVIGATION
+      var aboutMeBtn = d3.select("#aboutMeBtn")
+      var notebooksBtn = d3.select("#notebooksBtn")
+      var Lbracket = d3.select("#Lbracket");
+      var Rbracket = d3.select("#Rbracket");
+      var notebooks = d3.select("#notebooks");
+      var aboutMe = d3.select("#aboutMe");
+
+      if (navigationState == 0) {
+        aboutMe.style("opacity", 1);
+        aboutMe.style("display", "block");
+
+        notebooks.style("opacity", 0);
+        notebooks.style("display", "none");
+      } else if (navigationState == 1) {
+        aboutMe.style("opacity", 0);
+        aboutMe.style("display", "none");
+
+        notebooks.style("opacity", 1);
+        notebooks.style("display", "block");
+      }
+
+      notebooksBtn.on("click", function() {
+
+        if (navigationState == 0) {
+
+          aboutMe.transition().style("opacity", 0);
+          Rbracket.transition().style("margin-right", "100%");
+          Lbracket.transition().style("margin-left", "100%");
+
+          setTimeout(function () {
+
+            setTimeout(function () {
+              Rbracket.transition().style("margin-right", "0px");
+              Lbracket.transition().style("margin-left", "0px");
+
+              setTimeout(function () {
+                notebooks.transition().style("display", "block");
+                notebooks.transition().style("opacity", 1);
+                aboutMe.style("display", "none");
+                navigationState = 1;
+              }, 700); // called 1.15s after brackets sweep in
+
+            }, 150); // called 0.65s after brackets sweep in
+
+          }, 500); // called 0.5s after brackets sweep in
+
+        } // navigationState check
+
+      });
+
+      aboutMeBtn.on("click", function() {
+
+        if (navigationState == 1) {
+
+          notebooks.transition().style("opacity", 0);
+          Rbracket.transition().style("margin-right", "100%");
+          Lbracket.transition().style("margin-left", "100%");
+
+          setTimeout(function () {
+
+            setTimeout(function () {
+              Rbracket.transition().style("margin-right", "0px");
+              Lbracket.transition().style("margin-left", "0px");
+
+              setTimeout(function () {
+                aboutMe.transition().style("display", "block");
+                aboutMe.transition().style("opacity", 1);
+                notebooks.style("display", "none");
+                navigationState = 0;
+              }, 700); // called 1.15s after brackets sweep in
+
+            }, 150); // called 0.65s after brackets sweep in
+
+          }, 500); // called 0.5s after brackets sweep in
+
+        } // navigationState check
+
+      });
+    } // end of desktop
+
+  </script>
+
+</body>
+</html>
