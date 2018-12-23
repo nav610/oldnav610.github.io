@@ -241,6 +241,10 @@ body {
     width: 95%;
   }
 
+  .modal-content {
+    height: 150vw;
+  }
+
   .bohr-svg-container {
     padding-bottom: 0;
     position: relative;
@@ -288,7 +292,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    height: 120vw;
+    height: 100%;
     border: none;
   }
 }
