@@ -106,7 +106,7 @@ body {
 .navButton:hover {
   cursor: pointer;
   color: rgba(24, 255, 255, 0.6);
-  transition: 0.5s;
+  transition: 0s;
 }
 
 .navButton:before {
@@ -114,8 +114,8 @@ body {
   position: relative;
   opacity: 0;
   left: 4vw;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .navButton:hover:before {
@@ -128,8 +128,8 @@ body {
   position: relative;
   opacity: 0;
   left: -4vw;
-  -webkit-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .navButton:hover:after {
@@ -162,6 +162,7 @@ body {
   transition: 0.35s;
   margin-left: 1vw;
   margin-right: 1vw;
+  outline: none;
 }
 
 .bookButton:hover {
