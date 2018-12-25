@@ -72,6 +72,10 @@ body {
   width: 100%;
 }
 
+#notebookTitle {
+  opacity: 0;
+}
+
 .bohr-svg-container {
   padding-bottom: 0;
   position: relative;
@@ -83,6 +87,7 @@ body {
   display: flex;
   flex-direction: row;
   margin-top: 1.5vw;
+  justify-content: center;
 }
 
 .iframeWindow {

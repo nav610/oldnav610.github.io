@@ -45,15 +45,16 @@
     <div class="content" id="notebooks">
       <div class="notebookFlex">
         <button class="bookButton" id="bookButton1" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book1" src="images/book.png" alt="Book 1"/> </button>
-        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book2" src="images/book.png" alt="Book 2"/> </button>
-        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book3" src="images/book.png" alt="Book 3"/> </button>
-        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book4" src="images/book.png" alt="Book 4"/> </button>
+        <button class="bookButton" id="bookButton2" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book2" src="images/book.png" alt="Book 2"/> </button>
+        <button class="bookButton" id="bookButton3" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book3" src="images/book.png" alt="Book 3"/> </button>
+        <!-- <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book4" src="images/book.png" alt="Book 4"/> </button> -->
       </div>
       <div class="notebookFlex">
-        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book5" src="images/book.png" alt="Book 5"/> </button>
+        <p id="notebookTitle">.</p>
+        <!-- <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book5" src="images/book.png" alt="Book 5"/> </button>
         <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book6" src="images/book.png" alt="Book 6"/> </button>
         <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book7" src="images/book.png" alt="Book 7"/> </button>
-        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book8" src="images/book.png" alt="Book 8"/> </button>
+        <button class="bookButton" type="button" data-toggle="modal" data-target="#myModal"> <img class="book" id="book8" src="images/book.png" alt="Book 8"/> </button> -->
       </div>
     </div>
     <div class="content" id="aboutMe">
@@ -95,11 +96,52 @@
     // 1 = Notebooks
 
     // NOTEBOOK MODAL HANDLING
+    var bookTitle = d3.select("#notebookTitle");
     var book1 = document.getElementById("bookButton1");
+    var book2 = document.getElementById("bookButton2");
+    var book3 = document.getElementById("bookButton3");
 
+    // BOOK 1
     book1.onclick = function() {
-      d3.select(".modal-body").html("<iframe class='iframeWindow' src='notebooks/test-notebook.html'>hello</iframe>");
+      d3.select(".modal-body").html("<iframe class='iframeWindow' src='notebooks/OrderParameter.html'>hello</iframe>");
     }
+
+    d3.select("#bookButton1").on("mouseover", function() {
+      bookTitle.transition().style("opacity", 1);
+      bookTitle.html("Order Parameter");
+    });
+
+    d3.select("#bookButton1").on("mouseout", function() {
+      bookTitle.transition().style("opacity", 0);
+    });
+
+    // BOOK 2
+    book2.onclick = function() {
+      d3.select(".modal-body").html("<iframe class='iframeWindow' src='notebooks/BilayerThicknessUnitedAtom.html'>hello</iframe>");
+    }
+
+    d3.select("#bookButton2").on("mouseover", function() {
+      bookTitle.transition().style("opacity", 1);
+      bookTitle.html("Bilayer Thickness-United Atom");
+    });
+
+    d3.select("#bookButton2").on("mouseout", function() {
+      bookTitle.transition().style("opacity", 0);
+    });
+
+    // BOOK 3
+    book3.onclick = function() {
+      d3.select(".modal-body").html("<iframe class='iframeWindow' src='notebooks/RemoveMiddleWater.html'>hello</iframe>");
+    }
+
+    d3.select("#bookButton3").on("mouseover", function() {
+      bookTitle.transition().style("opacity", 1);
+      bookTitle.html("Remove Middle Water");
+    });
+
+    d3.select("#bookButton3").on("mouseout", function() {
+      bookTitle.transition().style("opacity", 0);
+    });
 
     if (mq.matches) {
       console.log("mobile!")
