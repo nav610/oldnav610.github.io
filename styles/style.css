@@ -2,7 +2,8 @@
 body {
   text-align: center;
   background-color: #171e22 !important;
-  font-family: "Futura", Arial, sans-serif !important;
+  font-family: "Fjalla One", sans-serif;
+  font-style: normal;
   overflow-y: hidden;
 }
 
@@ -14,6 +15,7 @@ body {
 }
 
 #title {
+  font-family: "Fjalla One", sans-serif;
   margin-left: auto;
   margin-right: auto;
   font-size: 3.3vw;
@@ -40,6 +42,7 @@ body {
 }
 
 #contentFlex {
+  font-family: "Fjalla One", sans-serif;
   display: flex;
   flex-direction: row;
   color: white;
@@ -72,6 +75,7 @@ body {
 }
 
 .bohr-atomic-symbol {
+  font-family: "Fjalla One", sans-serif;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: -moz-none;
@@ -99,6 +103,7 @@ body {
 }
 
 .navButton {
+  font-family: "Fjalla One", sans-serif;
   color: white;
   transition: 0.5s;
   font-size: 1.8vw;
@@ -173,6 +178,7 @@ body {
 }
 
 .footer {
+  font-family: "Fjalla One", sans-serif;
   color: white;
   font-size: 0.8vw;
   position: absolute;
