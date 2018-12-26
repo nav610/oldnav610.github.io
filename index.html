@@ -166,7 +166,7 @@
     if (mq.matches) {
       console.log("mobile!")
       if (window.matchMedia("(orientation: portrait)").matches) {
-        console.log("landscape")
+        console.log("portrait")
         // ATOMS
         var atomicConfigNa = {
           containerId: "#bohr-model-container",
@@ -252,13 +252,15 @@
                 setTimeout(function () {
                   notebooks.transition().style("display", "block");
                   notebooks.transition().style("opacity", 1);
+                  notebooksBtn.style("text-decoration", "underline");
                   aboutMe.style("display", "none");
+                  aboutMeBtn.style("text-decoration", "none");
                   navigationState = 1;
                 }, 850); // called 1.15s after brackets sweep in
 
-              }, 150); // called 0.65s after brackets sweep in
+              }, 450); // called 0.65s after brackets sweep in
 
-            }, 1600); // called 0.5s after brackets sweep in
+            }, 1000); // called 0.5s after brackets sweep in
 
           } // navigationState check
 
@@ -281,13 +283,15 @@
                 setTimeout(function () {
                   aboutMe.transition().style("display", "block");
                   aboutMe.transition().style("opacity", 1);
+                  aboutMeBtn.style("text-decoration", "underline");
                   notebooks.style("display", "none");
+                  notebooksBtn.style("text-decoration", "none");
                   navigationState = 0;
                 }, 850); // called 1.15s after brackets sweep in
 
-              }, 150); // called 0.65s after brackets sweep in
+              }, 450); // called 0.65s after brackets sweep in
 
-            }, 1600); // called 0.5s after brackets sweep in
+            }, 1000); // called 0.5s after brackets sweep in
 
           } // navigationState check
 
@@ -379,7 +383,9 @@
                 setTimeout(function () {
                   notebooks.transition().style("display", "block");
                   notebooks.transition().style("opacity", 1);
+                  notebooksBtn.style("text-decoration", "underline");
                   aboutMe.style("display", "none");
+                  aboutMeBtn.style("text-decoration", "none");
                   navigationState = 1;
                 }, 850); // called 1.15s after brackets sweep in
 
@@ -408,7 +414,9 @@
                 setTimeout(function () {
                   aboutMe.transition().style("display", "block");
                   aboutMe.transition().style("opacity", 1);
+                  aboutMeBtn.style("text-decoration", "underline");
                   notebooks.style("display", "none");
+                  notebooksBtn.style("text-decoration", "none");
                   navigationState = 0;
                 }, 850); // called 1.15s after brackets sweep in
 
