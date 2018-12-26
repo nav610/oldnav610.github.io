@@ -56,20 +56,8 @@ body {
   width: 90%;
 }
 
-#modalBody {
-  height: 90%;
-}
-
 #break {
   font-size: 1.8vw;
-}
-
-#modalContent {
-  width: 70%;
-}
-
-#modalBody {
-  width: 100%;
 }
 
 #notebookTitle {
@@ -92,7 +80,7 @@ body {
 
 .iframeWindow {
   width: 100%;
-  height: 600px;
+  height: 78vh;
   border: none;
 }
 

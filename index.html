@@ -28,15 +28,11 @@
     Naveen Mohideen
   </div>
   <div id="navBar">
-    <div class="navButton" id="aboutMeBtn">
-      About Me
-    </div>
+    <div class="navButton" id="aboutMeBtn">About Me</div>
     <div id="break">
       &nbsp;&nbsp;|&nbsp;&nbsp;
     </div>
-    <div class="navButton" id="notebooksBtn">
-      Notebooks
-    </div>
+    <div class="navButton" id="notebooksBtn">Notebooks</div>
   </div>
   <div id="contentFlex">
     <div class="bracket" id="Lbracket">
@@ -91,9 +87,33 @@
 
     const mq = window.matchMedia( "(max-width: 768px)" );
 
-    var navigationState = 0;
+    var navigationState = 1;
     // 0 = About Me
     // 1 = Notebooks
+
+    // NAVIGATION
+    var aboutMeBtn = d3.select("#aboutMeBtn")
+    var notebooksBtn = d3.select("#notebooksBtn")
+    var Lbracket = d3.select("#Lbracket");
+    var Rbracket = d3.select("#Rbracket");
+    var notebooks = d3.select("#notebooks");
+    var aboutMe = d3.select("#aboutMe");
+
+    if (navigationState == 0) {
+      aboutMe.style("opacity", 1);
+      aboutMe.style("display", "block");
+      aboutMeBtn.style("text-decoration", "underline");
+
+      notebooks.style("opacity", 0);
+      notebooks.style("display", "none");
+    } else if (navigationState == 1) {
+      aboutMe.style("opacity", 0);
+      aboutMe.style("display", "none");
+
+      notebooks.style("opacity", 1);
+      notebooks.style("display", "block");
+      notebooksBtn.style("text-decoration", "underline");
+    }
 
     // NOTEBOOK MODAL HANDLING
     var bookTitle = d3.select("#notebookTitle");
@@ -214,28 +234,6 @@
         var myAtom = new Atom(atomicConfigNa)
         var myAtom = new Atom(atomicConfigV)
         var myAtom = new Atom(atomicConfigN)
-
-        // NAVIGATION
-        var aboutMeBtn = d3.select("#aboutMeBtn")
-        var notebooksBtn = d3.select("#notebooksBtn")
-        var Lbracket = d3.select("#Lbracket");
-        var Rbracket = d3.select("#Rbracket");
-        var notebooks = d3.select("#notebooks");
-        var aboutMe = d3.select("#aboutMe");
-
-        if (navigationState == 0) {
-          aboutMe.style("opacity", 1);
-          aboutMe.style("display", "block");
-
-          notebooks.style("opacity", 0);
-          notebooks.style("display", "none");
-        } else if (navigationState == 1) {
-          aboutMe.style("opacity", 0);
-          aboutMe.style("display", "none");
-
-          notebooks.style("opacity", 1);
-          notebooks.style("display", "block");
-        }
 
         notebooksBtn.on("click", function() {
 
@@ -363,28 +361,6 @@
         var myAtom = new Atom(atomicConfigNa)
         var myAtom = new Atom(atomicConfigV)
         var myAtom = new Atom(atomicConfigN)
-
-        // NAVIGATION
-        var aboutMeBtn = d3.select("#aboutMeBtn")
-        var notebooksBtn = d3.select("#notebooksBtn")
-        var Lbracket = d3.select("#Lbracket");
-        var Rbracket = d3.select("#Rbracket");
-        var notebooks = d3.select("#notebooks");
-        var aboutMe = d3.select("#aboutMe");
-
-        if (navigationState == 0) {
-          aboutMe.style("opacity", 1);
-          aboutMe.style("display", "block");
-
-          notebooks.style("opacity", 0);
-          notebooks.style("display", "none");
-        } else if (navigationState == 1) {
-          aboutMe.style("opacity", 0);
-          aboutMe.style("display", "none");
-
-          notebooks.style("opacity", 1);
-          notebooks.style("display", "block");
-        }
 
         notebooksBtn.on("click", function() {
 
@@ -515,28 +491,6 @@
       var myAtom = new Atom(atomicConfigV)
       var myAtom = new Atom(atomicConfigN)
 
-      // NAVIGATION
-      var aboutMeBtn = d3.select("#aboutMeBtn")
-      var notebooksBtn = d3.select("#notebooksBtn")
-      var Lbracket = d3.select("#Lbracket");
-      var Rbracket = d3.select("#Rbracket");
-      var notebooks = d3.select("#notebooks");
-      var aboutMe = d3.select("#aboutMe");
-
-      if (navigationState == 0) {
-        aboutMe.style("opacity", 1);
-        aboutMe.style("display", "block");
-
-        notebooks.style("opacity", 0);
-        notebooks.style("display", "none");
-      } else if (navigationState == 1) {
-        aboutMe.style("opacity", 0);
-        aboutMe.style("display", "none");
-
-        notebooks.style("opacity", 1);
-        notebooks.style("display", "block");
-      }
-
       notebooksBtn.on("click", function() {
 
         if (navigationState == 0) {
@@ -554,7 +508,9 @@
               setTimeout(function () {
                 notebooks.transition().style("display", "block");
                 notebooks.transition().style("opacity", 1);
+                notebooksBtn.style("text-decoration", "underline");
                 aboutMe.style("display", "none");
+                aboutMeBtn.style("text-decoration", "none");
                 navigationState = 1;
               }, 700); // called 1.15s after brackets sweep in
 
@@ -583,7 +539,9 @@
               setTimeout(function () {
                 aboutMe.transition().style("display", "block");
                 aboutMe.transition().style("opacity", 1);
+                aboutMeBtn.style("text-decoration", "underline");
                 notebooks.style("display", "none");
+                notebooksBtn.style("text-decoration", "none");
                 navigationState = 0;
               }, 700); // called 1.15s after brackets sweep in
 
